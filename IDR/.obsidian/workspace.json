@@ -4,19 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "75ba684917cdf788",
+        "id": "3844d6a639ba290c",
         "type": "tabs",
         "children": [
           {
-            "id": "bf6102b403ba28ba",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {}
-            }
-          },
-          {
-            "id": "2d5322a979b7a333",
+            "id": "c1f6f3e0a025560f",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -26,21 +18,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "04e212ed5ef44a6b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "IDR - Multiview Neural Surface Reconstruction by Disentangling Geometry and Appearance - INTRO.md",
-                "mode": "preview",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -167,11 +146,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "2d5322a979b7a333",
+  "active": "c1f6f3e0a025560f",
   "lastOpenFiles": [
-    "Previous Work.md",
+    "().md",
     "Μεθοδολογία - IDR.md",
+    "Previous Work.md",
     "IDR - Multiview Neural Surface Reconstruction by Disentangling Geometry and Appearance - INTRO.md",
+    "Embedding Networks.md",
     "Untitled.canvas",
     "2023-07-28.md"
   ]
