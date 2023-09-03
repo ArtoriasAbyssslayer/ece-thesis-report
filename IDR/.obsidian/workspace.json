@@ -4,16 +4,36 @@
     "type": "split",
     "children": [
       {
-        "id": "3844d6a639ba290c",
+        "id": "a4f4c88ad34aeacf",
         "type": "tabs",
         "children": [
           {
-            "id": "c1f6f3e0a025560f",
+            "id": "cb47d976c5441839",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Μεθοδολογία - IDR.md",
+                "file": "MLP Watertight.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "33b5e1a33b784e24",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          },
+          {
+            "id": "3d9b19bb2df95d0a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "MLP Watertight.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Μεθοδολογία - IDR.md",
+                "file": "MLP Watertight.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +122,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Μεθοδολογία - IDR.md",
+                "file": "MLP Watertight.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +145,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Μεθοδολογία - IDR.md"
+                "file": "MLP Watertight.md"
               }
             }
           }
@@ -146,14 +166,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c1f6f3e0a025560f",
+  "active": "cb47d976c5441839",
   "lastOpenFiles": [
-    "().md",
+    "Μεθοδολογία IDR - Part2.md",
     "Μεθοδολογία - IDR.md",
     "Previous Work.md",
+    "MLP Watertight.md",
+    "Implicit Differentiation.md",
     "IDR - Multiview Neural Surface Reconstruction by Disentangling Geometry and Appearance - INTRO.md",
     "Embedding Networks.md",
     "Untitled.canvas",
+    "Untitled 1.canvas",
+    "().md",
     "2023-07-28.md"
   ]
 }
