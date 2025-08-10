@@ -1,0 +1,213 @@
+% Fixed mystyle.sty for proper Greek font handling
+\ProvidesPackage{mystyle}[2023/09/25 My LaTeX Style - Fixed Version]
+
+% CRITICAL: Set up math fonts FIRST, before any other font configuration
+\usepackage{unicode-math}
+\setmathfont{TeX Gyre Termes Math}
+
+% Fonts and Languages
+\usepackage{polyglossia}
+\setdefaultlanguage[variant=monotonic]{greek}
+\setotherlanguage{english}
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX, Mapping=tex-text}
+
+% Font definitions - Fixed for better Greek support
+% First, try system fonts (easier approach)
+% Alternative: Use DejaVu fonts which have excellent Greek support
+% Uncomment these lines if Liberation fonts don't work:
+% \setmainfont{DejaVu Serif}
+% \setsansfont{DejaVu Sans}
+
+% Add small caps support for Liberation Serif
+\defaultfontfeatures{Scale=MatchLowercase}
+\setmainfont{Liberation Serif}[
+    BoldFont       = Liberation Serif Bold,
+    ItalicFont     = Liberation Serif Italic,
+    BoldItalicFont = Liberation Serif Bold Italic,
+    SmallCapsFont  = Liberation Serif,
+    SmallCapsFeatures = {Letters=SmallCaps}
+]
+
+\setsansfont{Liberation Sans}[
+    BoldFont       = Liberation Sans Bold,
+    ItalicFont     = Liberation Sans Italic,
+    BoldItalicFont = Liberation Sans Bold Italic
+]
+
+% Set monospace font
+\setmonofont{DejaVu Sans Mono}
+
+% Math font - force proper math font usage
+\AtBeginDocument{%
+  % Override any text font fallbacks in math mode
+  \renewcommand{\mathbf}[1]{\symbf{#1}}
+  \renewcommand{\boldsymbol}[1]{\symbf{#1}}
+  % Ensure math mode always uses math font
+  \everymath{\displaystyle}
+  \everydisplay{\displaystyle}
+}
+
+% Graphics and Figures
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hhline}
+\usepackage{pdflscape}
+\usepackage{longtable}
+\usepackage{tikz}
+\usepackage{adjustbox}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\hyphenation{}
+\usepackage{array}
+
+% Better table formatting - helps with underfull hbox warnings
+\usepackage{ltxtable}
+\renewcommand{\tabularxcolumn}[1]{m{#1}} % Center content vertically
+\newcolumntype{Y}{>{\centering\arraybackslash}X} % Centered X column
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % Left-aligned fixed width
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % Centered fixed width
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}} % Right-aligned fixed width
+
+% Mathematics - CRITICAL ORDER: unicode-math MUST come first, BEFORE fontspec
+\usepackage{unicode-math}
+
+% Set math font BEFORE setting text fonts
+\setmathfont{TeX Gyre Termes Math}
+
+% Now safe to load other math packages
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{mathtools}
+
+% DO NOT load amsfonts or amssymb with unicode-math
+
+% Paired delimiter for absolute values
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+
+% Subfigure numbering
+\renewcommand\thesubfigure{\arabic{subfigure}}
+
+% Quotation and Epigraph
+\usepackage{dirtytalk}
+\usepackage{epigraph}
+
+% Bibliography - Enhanced for better citation handling
+\usepackage[numbers,longnamesfirst,sort&compress]{natbib}
+\bibliographystyle{ieeetr}
+% Fix for undefined citations
+\renewcommand{\NAT@citeundefined}{\PackageWarning{natbib}{Citation `\@citeb' undefined}}
+
+% Algorithm and Pseudocode
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{varwidth}
+\renewcommand\algorithmiccomment[1]{%
+  \hfill\#\ {#1}%
+}
+
+% List of equations
+\usepackage{tocloft}
+\newlistof{equations}{equ}{List of Equations}
+\newcommand{\myequation}[1]{%
+  \addcontentsline{equ}{figure}{\protect\numberline{\theequation}#1}\par
+}
+
+% Theorems (Greek)
+\newtheorem{theorem}{Θεώρημα}[section]
+\newtheorem{lemma}{Λήμμα}[section]
+\newtheorem{corollary}{Πόρισμα}[section]
+\newtheorem{definition}{Ορισμός}[section]
+
+% Title formatting
+\usepackage{titlesec}
+\usepackage{titletoc}
+
+% Chapter formatting - removed \greekfont since we're using system fonts now
+\titleformat{\chapter}[display]{\filleft\Huge}{\scalebox{8}{\textcolor{gray!50}{\thechapter}}}{1ex}{\Huge}
+
+% Part formatting
+\titleformat{\part}[display]{\huge}{\MakeUppercase{\partname} \Huge{\thepart}}{80pt}{}
+
+% Appendix formatting
+\usepackage{appendix}
+\titleformat{name=\chapter,numberless}[display]{\Huge\bfseries}{}{20pt}{\Huge}
+\AtBeginEnvironment{appendices}{%
+  \titleformat{\chapter}[display]{\Huge\bfseries}{Παράρτημα \thechapter}{20pt}{\Huge}
+}
+
+% Hyperlinks and references
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+
+% Greek autoref names
+\def\chapterautorefname{κεφάλαιο}
+\def\sectionautorefname{υποκεφάλαιο}
+\def\subsectionautorefname{ενότητα}
+\def\appendixautorefname{παράρτημα}
+\def\equationautorefname{εξίσωση}
+\def\AMSautorefname{εξίσωση}
+\def\tableautorefname{πίνακα}
+\def\figureautorefname{σχήμα}
+\def\algorithmautorefname{αλγόριθμος}
+
+% Header and Footer
+\usepackage{fancyhdr}
+\usepackage{ifthen}
+\setlength{\headheight}{15pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headsep}{15pt}
+
+% Page style configuration
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[C]{}
+\fancyfoot[LO,RE]{\small{Φίλης Χ.}}
+\fancyfoot[CO,CE]{\small{\enit{3D} ανακατασκευή \enit{HF} επιφανειών από έμμεσες \enit{SDF} αναπαραστάσεις  \\ μέσω Βαθιών Διαμορφωμένων \enit{3D} Κωδικοποιήσεων | \enit{PyTorch}}}
+\fancyfoot[RO,LE]{\small{\thepage}}
+
+% Utility commands
+\newcommand{\newevenside}{%
+  \ifthenelse{\isodd{\thepage}}{\newpage}{%
+    \newpage
+    \phantom{}
+    \thispagestyle{empty}
+    \newpage
+  }
+}
+
+% English italics command
+\newcommand{\enit}[1]{\textit{\selectlanguage{english}#1}}
+
+% Blank footnote command
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+% Table of Contents formatting
+\AtBeginDocument{%
+  \startcontents
+}
+\AtEndDocument{%
+  \stopcontents
+}
+\titlecontents{chapter}[0em]{\addvspace{10pt}\bfseries}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}
+
+% Additional fixes for common warnings
+% Better line breaking
+\usepackage{microtype}
+\tolerance=1000
+\emergencystretch=5pt
+
+% Better URL handling for long URLs
+\def\UrlBreaks{\do\/\do-\do_\do.\do=\do?\do&}
+
+% Load etoolbox last for compatibility
+\usepackage{etoolbox}

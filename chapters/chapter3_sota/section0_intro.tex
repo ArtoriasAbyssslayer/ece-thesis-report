@@ -1,0 +1,66 @@
+%% Εισαγωγική Παράγραφος
+\section{Τεχνικές Βαθιάς Μάθησης, Τρισδιάστατης Ανακατασκευής και Κωδικοποίησης}
+\label{section:sotaintro}
+\par
+    Ο τομέας της υπολογιστικής όρασης\textit{(Computer Vision)} καθώς και της αποτύπωσης \enit{3D} δεδομένων του χώρου σε εικονικά περιβάλλοντα \textit{(Photogrammetry, 3D Scanning)} έχει γίνει επιτακτικός τομέας απασχόλησης του επιστημονικού δυναμικού με αποκορύφωμα να υπάρχουν εργασίες βιβλιογραφικής επισκόπησης επί του συνόλου των σύγχρονων μεθόδων ανακατασκευής \cite{chen2023review}, λόγω εφαρμογών που απαιτούν είτε εικονικές συνθήκες αξιολόγησης (κίνηση ρομπότ στον χώρο), είτε αποτύπωση πραγματικών αντικειμένων σε εικονικά περιβάλλοντα για χάρη του ρεαλισμού \textit{(Ρεαλιστικά περιβάλλοντα γραφικών)}, είτε ακόμα και παραγωγή \enit{3D} δεδομένων που δεν έχουμε \textit{(πχ. ανακατασκευή Παρθενώνα όπως ήταν επί χρυσού αιώνα)}, χωρίς την μεγάλη προσπάθεια των κλασσικών μεθόδων που δεν έχουν μεθόδους προσέγγισης και ανακατασκευής δεδομένων. Στο μεταξύ, η αναλυτικότητα που προσφέρουν τα δίκτυα βαθιάς μάθησης και η δυνατότητα τους να μαθαίνουν πεδία του χώρου τα οποία περιγράφονται δύσκολα χωρίς όλα τα απαραίτητα δεδομένα και συγκεκριμένα το να μαθαίνεται ένα 3D σχήμα παρέχοντας μόνο εικόνες διευκολύνει το εγχείρημα ανακατασκευής χωρικών δεδομένων και μοντέλων.
+
+
+\par 
+    Οι εργασίες που ασχολούνται με την παραμόρφωση και γενικότερα την επεξεργασία άμεσων αναπαραστάσεων είναι πολυπληθείς και έχουν χρησιμοποιηθεί κατά καιρούς σε μοντέλα εκτίμησης ανθρώπινου σώματος \cite{pavlakos2018learning}, \cite{bogo2016keep}, \cite{kolotouros2019convolutional} και προσώπου \cite{deng2020accurate}. Βέβαια, αυτές οι μέθοδοι εφόσον έχουν διαθέσιμη την άμεση \enit{3D} πληροφορία δεν αφορούν άμεσα την ανακατασκευή που πραγματοποιείται με μοντέλα που χρησιμοποιούν απλά εικόνες για επίβλεψη.
+\par 
+    Οι έρευνες που πρώτες επέκτειναν αυτή την λογική παραμόρφωσης βασιζόμενες στην παραμόρφωση πρωτότυπων γραφικών (\enit{Deform one primitive}) ανακατασκευάζοντας \enit{3D} σχήματα με χρήση κωδικοποίησης πληροφορίας αλλά επέμειναν στην τρισδιάστατη επίβλεψη νεφών σημείων (\enit{Point Clouds}) οδήγησαν σε εργασίες όπως: \enit{Pixel2Mesh}\cite{wang2018pixel2mesh} και \enit{Pixel2Mesh++}\cite{wen2019pixel2mesh++} που αντιμετωπίζει το πρόβλημα σε κάτω από πολλές προβολές. 
+\par
+    Ένας συγκεντρωτικός πίνακας που δείχνει όλες τις εργασίες με τον αντίστοιχο τρόπο με τον οποίο χειρίζονται τις τρισδιάστατες αναπαραστάσεις με πλήθος διαφορετικών αρχιτεκτονικών δικτύων (αναφορικά \enit{CNN, RNN, MLP}), χρήση και επιβλεπόμενης, μη-επιβλεπόμενης, ημι-επιβλεπόμενης αλλά και αυτό-ενισχυτικής εκπαίδευσης \enit{(reinforcement learning)}, φαίνεται παρακάτω. 
+\par
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|P{3cm}|P{5cm}|P{7cm}|}
+        \hline 
+        Διαδικασία & Οικογένεια Αναπαραστάσεων &  Έρευνα \\
+        \hline 
+        Deform one template & Mesh & "Human from single image" \cite{Zheng2019DeepHuman} \\
+        \hline 
+        Retrieve and deform template & Mesh & ShapeFlow \cite{jiang2021shapeflow} \\
+        \hline 
+        Deform one primitive & Mesh & Pixel2Mesh \cite{wang2018pixel2mesh} \\
+        \hline 
+        Deform multiple primitives & Mesh & AtlasNet \cite{groueix2018atlasnet} \\
+        \hline 
+        Set of primitives & Mesh & BSP-Net \cite{chen2020bspnet} \\
+        \hline 
+        Primitive detection & Parametric surface & ParSeNet \cite{liu2015parsenet} \\
+        \hline 
+        Grid mesh & Mesh & Neural Marching Cubes \cite{Chen_2021} \\
+        \hline 
+        Grid polygon soup & Mesh & Adaptive O-CNN \cite{Wang_2018} \\
+        \hline 
+        Grid voxels & Implicit & 3D-R2N2 \cite{choy20163dr2n2} \\
+        \hline 
+        Neural implicit & Implicit & IM-Net \cite{Chen_2019_CVPR}, DeepSDF \cite{park2019deepsdf} \\
+        \hline 
+        Primitive CSG & CSG tree & CAPRI-Net \cite{yu2021caprinet} \\
+        \hline 
+        Sketch and extrude & CSG tree & ExtrudeNet \cite{ren2022extrudenet} \\
+        \hline 
+        Connect given vertices & Mesh & PointTriNet \cite{Sharp2020PointTriNetLT} \\
+        \hline 
+        Generate and connect vertices & Mesh & PolyGen \cite{nash2020polygen} \\
+        \hline 
+        Sequence of edits & Mesh & Modeling 3D Shapes by RL \cite{lin2020modeling} \\
+        \hline
+    \end{tabular}
+    \caption{Πίνακας Ερευνών πάνω στις 3D Αναπαραστάσεις \cite{chen2023review}}
+    \label{tab:3dreconmethods}
+\end{table}
+
+\par 
+    Πρόσφατα αρκετές ερευνητικές εργασίες έχουν ασχοληθεί πάνω στην έμμεση αναπαράσταση συμπαγών τρισδιάστατων αντικείμενων, βελτιστοποιώντας απευθείας νευρωνικά δίκτυα που αντιστοιχούν $x,\psi,z$ τρισδιάστατες συντεταγμένες με εκπαιδευόμενη γεωμετρία σε πεδία προσημασμένης απόστασης (\enit{SDF}) που είδαμε προηγουμένως ή δίκτυα κάλυψης (\enit{voxel occupancy fields}), τα οποία έχουν να κάνουν με άλλες έμμεσες αναπαραστάσεις (\enit{implicit representations}) όπως τα \enit{octrees} (βλ. \ref{fig:octree}). Έχοντας ως απαρχή το \enit{CVPR(Computer Vision and Pattern Recognition Conference)} του 2019 με τρεις ταυτόχρονες εργασίες πάνω στην εκπαίδευση τέτοιων αναπαραστάσεων σε δίκτυα όπως το IM-Net\cite{Chen_2019_CVPR}, OccNet\cite{sima2023scene}, DeepSDF\cite{park2019deepsdf}, τα οποία είναι μοντέλα \enit{\textbf{voxel-based}}, δηλαδή μοντέλα που περιγράφουν μη παραμετρικά
+    όγκους με τρισδιάστατα πλέγματα τιμών και είναι ίσως η πιο φυσική επέκταση στον τρισδιάστατο τομέα μάθησης.
+\par
+    Επί της ουσίας, οι έμμεσες νευρωνικές αναπαραστάσεις (όπως είδαμε \ref{section:sdf}), είναι ένα MLP (Multi-Layer Perceptron) το οποίο παίρνει μια συντεταγμένη ενός σημείου ως είσοδο και βγάζει ως έξοδο το εσωτερικό-εξωτερικό πρόσημο \cite{Chen_2019_CVPR}, \cite{mescheder2019occupancy}, ή την απόσταση με πρόσημο αυτού του σημείου από την επιφάνεια \cite{park2019deepsdf}. Το ίδιο το MLP έτσι αντιπροσωπεύει ένα τρισδιάστατο σχήμα υπό την μορφή έμμεσης συνάρτησης. Ο τρόπος που τέτοια δίκτυα γεννούν από μόνα τους τρισδιάστατες γεωμετρίες γραφικών πρωτοτύπων έχει αναλυθεί στο θεωρητικό υπόβαθρο(Κεφ.\ref{chapter:theory} \ref{section:sdf}) με την βοήθεια ειδικών μορφών γεωμετρικής κανονικοποίησης των βαρών \enit{(Implicit Geometric Regularization \cite{gropp2020implicit}}).  Βέβαια, για να μπορέσει να γεννηθεί κάποια διαφορετική έξοδος με βάση την είσοδο, το MLP θα μπορούσε να ελεγχθεί συνενώνοντας ένα σχήμα σε μορφή \enit{latent code} \footnote{κωδικοποίηση που προκύπτει από συνελικτικό συνήθως δίκτυο \enit{CNN}} με τις συντεταγμένες εισόδου του πριν την κλήση της εμπρόσθιας διάδοσης\cite{peng2020convolutional}, \cite{chibane2020implicit}. 
+
+\par
+     Η εργασία παρά όλη αυτήν την πλούσια και εξειδικευμένη βιβλιογραφία, δεν βασίστηκε σε όλο το φάσμα της, καθώς πολλές από αυτές τις εργασίες εξειδικεύουν το ενδιαφέρον τους σε άλλα πράγματα και όχι στην υψηλοσυχνοτική κωδικοποίηση των επιφανειών και του φωτισμού. Συνεπώς, παρουσιάζονται οι απλές μορφές εργασιών στις έμμεσες μορφές αναπαραστάσεων από πολλές όψεις που απαιτούν ακόμα <<κακώς τοποθετημένα>> μαθηματικά προβλήματα, όπως στο \enit{ MVSR-IDR \cite{yariv2020multiview} (Multi-view Neural Surface Reconstruction - Implicit Differential Rendering)} και όχι το \enit{NeuS \cite{DBLP:journals/corr/abs-2106-10689} (Neural Surface Reconstruction - Volumetric Rendering)} στην ομπρέλα της νευρωνικής απόδοσης σκηνών.
+     
+     Στο κομμάτι της κωδικοποίησης αντλείται ενδιαφέρον από την χρήση κωδικοποίησης κατακερματισμού (\enit{hash}) στο \enit{Instant-NGP(\textit{Neural Graphics Primitives})} \cite{mueller2022instant}, η κωδικοποίηση υψηλοσυχνοτικού περιεχομένου φωτισμού  όπως το (\enit{NeRF , ie. Neural Radiance Field}) \cite{mildenhall2020nerf}, \cite{tancik2020fourier}, αλλά και οι βαθιές κωδικοποιήσεις που βασίζονται στην λειτουργία κυματιδίων \enit{NFFB} \cite{wu2023neural}, καθώς και η διαμόρφωση χαρακτηριστικών που εξάγουν τα νευρωνικά δίκτυα όπως αυτή παρουσιάστηκε στο \enit{StyleGan2} \cite{karras2020analyzing}.

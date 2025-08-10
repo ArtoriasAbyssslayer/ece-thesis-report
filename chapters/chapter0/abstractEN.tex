@@ -1,0 +1,21 @@
+\clearpage
+\addcontentsline{toc}{section}{Abstract}
+\begin{center}
+  \centering
+  Abstract \\
+  \vspace{0.5cm}
+  \textbf{\large{ Implicit Neural Surface Reconstruction with 3D Neural High Frequency Embeddings}}
+  \vspace{1cm}
+\end{center}
+\par
+
+    Recently, there has been an overflow of deep learning success in image processing, as well as a need to manage \enit{3D} information in computer vision applications and graphics machines. To date, health scientists working with 3D bone/cavity models, mechanical component manufacturers, artists, game designers or film visual effects technicians who want to easily capture real objects on the computer in most cases use classical photogrammetry methods to create 3D scans of objects, a process that is both time-consuming and greedy in terms of how the result is represented in memory.
+    Nowadays, accurate 3D models need to be stored in the computer with the least possible spatial compromises, and the process of producing them should be intuitive and simple, done just taking a few pictures of them.
+\par
+    In the present diploma thesis, an attempt is made for the improvement  of the input encoding using deep neural networks on the three-dimensional implicit surface reconstruction models, i.e.,  networks representing \enit{3D} space through implicit representations. These deep neural networks (\enit{Mostly MLPs}) attempt to approximate  the geometry field and the appearance of a watertight surface through signed distance functions (\enit{SDFs}). This process is challenging \enit{(requiring a lot of training time)}, especially when these networks are not able to capture the high frequency content of the surface that is being reconstructed, using multi-view synthesis \enit{(real images are used for supervision of the network's weights)}. Therefore, methods are proposed that transform the way the data is processed, allowing both the capture of high frequency details, spatial features in terms of the surface geometry and appearance for in general high fidelity novel view synthesis and fast convergence of the model.
+\par
+    Thus, a deep learning architecture is proposed, based on advanced signal processing concepts such as wavelet decomposition via Neural Fourier filter Banks \cite{wu2023neural} to construct the best possible input encoding for the neural surface reconstruction network. In this effort, innovative ideas about encoding the input are proposed,as in Neural Graphics Primitives \cite{mueller2022instant}, demonstrating the effect that multi-resolution hash grid encoding has on spatial embedding of the sparse high frequency content. This allows capturing faster the changes in geometry and appearance instantly during surface composition. Finally, further development is made by giving the network the ability  to pay attention on which frequency/spatial feature maps of the input are most effective for better reconstruction using modulation and demodulation of the existing feature maps in every grid resolution.
+
+     \blfootnote{\textbf{Keywords}: Photogrammetry, 3D Neural Surface Reconstruction, Signed Distance Functions, Multi-Resolution Hash Grid Encoding, Neural Fourier Filter Banks, Feature Modulation/Demodulation}
+
+\clearpage
