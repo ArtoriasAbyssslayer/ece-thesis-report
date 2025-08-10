@@ -6,7 +6,9 @@ To build it run
 ```
 (appropriate Makefile included) 
 
-```deps
+```
+deps
   xgreek, texlive-full, texlive-extra, texlive-fonts-extra
 ```
+
 
