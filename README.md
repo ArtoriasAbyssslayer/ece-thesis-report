@@ -13,3 +13,5 @@ LaTeX Template for diploma thesis reports
 ```bash
   $ make help # Displays additional make options
 ```
+
+![thesis_charisfil.pdf](https://github.com/ArtoriasAbyssslayer/ece-thesis-report/blob/master/thesis_charisfil.pdf)
